@@ -14,12 +14,26 @@
  * limitations under the License.
  */
 
-package net.leibman.scalajs.react.components
+package demo.components.reactsplitpane
 
-package object demo {
+import japgolly.scalajs.react._
+import japgolly.scalajs.react.vdom.html_<^._
 
-  type Traversable[+A] = scala.collection.immutable.Traversable[A]
-  type Iterable[+A]    = scala.collection.immutable.Iterable[A]
-  type Seq[+A]         = scala.collection.immutable.Seq[A]
-  type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
+object ReactSplitPaneInfo {
+
+  val component = ScalaComponent
+    .builder[Unit]("ReactSplitPaneInfo")
+    .render(P => {
+      <.div(^.cls := "full-width-section")(
+        <.h3("React Split Pane :"),
+        <.p("Wrapper for the react-split-pane component (0.1.66)"),
+        <.a(
+          ^.href := "https://github.com/tomkp/react-split-pane",
+          "react-split-pane on GitHub"
+        )
+      )
+    })
+    .build
+
+  def apply() = component()
 }

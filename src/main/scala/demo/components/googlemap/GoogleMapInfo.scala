@@ -14,12 +14,28 @@
  * limitations under the License.
  */
 
-package net.leibman.scalajs.react.components
+package demo
+package components
+package googlemap
 
-package object demo {
+import japgolly.scalajs.react._
+import japgolly.scalajs.react.vdom.html_<^._
 
-  type Traversable[+A] = scala.collection.immutable.Traversable[A]
-  type Iterable[+A]    = scala.collection.immutable.Iterable[A]
-  type Seq[+A]         = scala.collection.immutable.Seq[A]
-  type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
+object GoogleMapInfo {
+
+  val component = ScalaComponent
+    .builder[Unit]("googleMapInfo")
+    .render(P => {
+      InfoTemplate(componentFilePath = "maps/GoogleMap.scala")(
+        <.h3("Google Map :"),
+        <.p("Map component based on ",
+            <.a(^.href := "https://developers.google.com/maps/documentation/javascript/")(
+              "google map javascript api"))
+      )
+
+    })
+    .build
+
+  def apply() = component()
+
 }

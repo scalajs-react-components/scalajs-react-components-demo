@@ -14,12 +14,23 @@
  * limitations under the License.
  */
 
-package net.leibman.scalajs.react.components
+package demo.components
 
-package object demo {
+import japgolly.scalajs.react.ScalaComponent
+import japgolly.scalajs.react.vdom.html_<^._
 
-  type Traversable[+A] = scala.collection.immutable.Traversable[A]
-  type Iterable[+A]    = scala.collection.immutable.Iterable[A]
-  type Seq[+A]         = scala.collection.immutable.Seq[A]
-  type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
+object ReactListViewInfo {
+
+  val component = ScalaComponent
+    .builder[Unit]("ReactListViewInfo")
+    .render(P => {
+      InfoTemplate(componentFilePath = "listviews/ReactListView.scala")(
+        <.h3("React ListView :"),
+        <.p("List View Component with search feature")
+      )
+    })
+    .build
+
+  def apply() = component()
+
 }

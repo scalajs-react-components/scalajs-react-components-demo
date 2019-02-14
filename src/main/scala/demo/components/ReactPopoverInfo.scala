@@ -14,12 +14,28 @@
  * limitations under the License.
  */
 
-package net.leibman.scalajs.react.components
+package demo.components
 
-package object demo {
+import japgolly.scalajs.react._
+import japgolly.scalajs.react.vdom.html_<^._
 
-  type Traversable[+A] = scala.collection.immutable.Traversable[A]
-  type Iterable[+A]    = scala.collection.immutable.Iterable[A]
-  type Seq[+A]         = scala.collection.immutable.Seq[A]
-  type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
+object ReactPopoverInfo {
+
+  val component = ScalaComponent
+    .builder[Unit]("ReactPopoverInfo")
+    .render(P => {
+      InfoTemplate(componentFilePath = "popovers/ReactPopOver.scala")(
+        <.h3("React Popover :"),
+        <.p(" Simple popover component with following options: "),
+        <.ul(^.paddingLeft := "15px")(
+          <.li("left"),
+          <.li("right"),
+          <.li("top"),
+          <.li("bottom")
+        )
+      )
+    })
+    .build
+
+  def apply() = component()
 }
